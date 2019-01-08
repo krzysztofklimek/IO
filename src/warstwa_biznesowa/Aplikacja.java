@@ -19,6 +19,7 @@ public class Aplikacja {
     private List<Grupa> grupy;
     private List<Trener> trenerzy;
     private List<Klient> klienci;
+    private List<Klient> klienciDoDodania;
 
 
     public Aplikacja(){
@@ -115,6 +116,7 @@ public class Aplikacja {
     public String dodajKlientaDoGrupy (String nazwaGrupy, String nazwaKlienta){
      String feedback = "nie udało się przydzielić klienta do grupy";
      Klient klient = szukajKlienta(nazwaKlienta);
+     
      Grupa grupa = szukajGrupy(nazwaGrupy);
      
      if( klient !=null && grupa !=null){
