@@ -34,5 +34,40 @@ public class Trener extends User {
     public void setGrupy(List<Grupa> grupy) {
         this.grupy = grupy;
     }
+   
+    public Grupa szukajGrupy(String nazwaGrupy){
+        Grupa grupa = null;
+        for(Grupa gr : grupy){
+            if(gr.getNazwaGrupy().equals(nazwaGrupy)){
+                grupa = gr;
+            }
+            //return grupa;
+        }
+    return grupa;
+    }
+    
+    
+    //------------------------------METODY PODLEGAJĄCE TESTOWANIU:
+    
+    public String przejrzyjListeSwoichGrup(){
+        String lista = "";
+        
+        for(Grupa gr : grupy){
+            lista += gr.getNazwaGrupy() + " ";
+        }
+    
+        return lista;
+    }
+    
+    public void dodajPlanZajec(String nazwaGrupy, String plan){
+        Grupa grupa = szukajGrupy(nazwaGrupy);
+        
+        grupa.setPlanZajec(plan);
+    }
+    
+    public void sprawdzObecnosc(){
+        
+    }
+    
     
 }

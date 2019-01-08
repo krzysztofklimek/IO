@@ -164,5 +164,6 @@ public class Aplikacja {
      grupy.add(new Grupa(dzien, godzStart, godzKoniec, sala));
  }
 
+
     
 }

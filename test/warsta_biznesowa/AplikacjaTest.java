@@ -18,6 +18,8 @@ import warstwa_biznesowa.Trener;
 public class AplikacjaTest {
 
     
+    //------------------------------METODY PODLEGAJĄCE TESTOWANIU ADMINISTRATOR:
+    
     @Test
     public void testSzukajKlienta(){
         Klient klient = new Klient("klientDoWyszukania");
@@ -250,6 +252,5 @@ public class AplikacjaTest {
         assertEquals(aplikacja.getGrupy().size(), 1);
         
     }
-    
     
 }
