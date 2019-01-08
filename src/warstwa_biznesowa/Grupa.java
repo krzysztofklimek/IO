@@ -7,6 +7,8 @@ package warstwa_biznesowa;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
@@ -21,12 +23,14 @@ public class Grupa {
     private int godzKoniec;
     private int sala;
     private String planZajec;
-    private String listaObecnosci;
+    private Map <String, ArrayList<Integer>> listaObecnosci;
+   
 
     
     public Grupa (String nazwa){
         this.nazwaGrupy = nazwa;
         klienci = new ArrayList<>();
+        listaObecnosci = new TreeMap <String, ArrayList<Integer>>();
     }
     
     
@@ -78,7 +82,7 @@ public class Grupa {
         return planZajec;
     }
 
-    public String getListaObecnosci() {
+    public Map <String, ArrayList<Integer>> getListaObecnosci() {
         return listaObecnosci;
     }
 
@@ -106,8 +110,34 @@ public class Grupa {
         this.planZajec = planZajec;
     }
 
-    public void setListaObecnosci(String listaObecnosci) {
+    public void setListaObecnosci(Map <String, ArrayList<Integer>> listaObecnosci) {
         this.listaObecnosci = listaObecnosci;
+    }
+    
+    public void obecnosc(String nazwaKlienta){
+        
+        if(listaObecnosci.containsKey(nazwaKlienta)){
+            listaObecnosci.get(nazwaKlienta).add(1);
+        }
+        else{
+            String key = nazwaKlienta;
+            ArrayList<Integer> value = new ArrayList<>();
+            value.add(1);
+            listaObecnosci.put(key, value);
+        }
+    }
+    
+    public void nieobecnosc(String nazwaKlienta){
+        
+        if(listaObecnosci.containsKey(nazwaKlienta)){
+            listaObecnosci.get(nazwaKlienta).add(0);
+        }
+        else{
+            String key = nazwaKlienta;
+            ArrayList<Integer> value = new ArrayList<>();
+            value.add(0);
+            listaObecnosci.put(key, value);
+        }
     }
     
 }

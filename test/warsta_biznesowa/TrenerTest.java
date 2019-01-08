@@ -7,6 +7,7 @@ package warsta_biznesowa;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import warstwa_biznesowa.Grupa;
@@ -58,9 +59,46 @@ public class TrenerTest {
         assertEquals("szczegółowy plan zajec", trener.szukajGrupy("grupa").getPlanZajec());
     }
     
-    @Test
-    public void testSprawdzObecnosc(){
+   @Test
+   public void testWstawObecnosc(){
+       
+       Grupa grupa = new Grupa("grupa");
+       List<Grupa> grupy = new ArrayList<>();
+       grupy.add(grupa);
+       Trener trener = new Trener("trener");
+       trener.setGrupy(grupy);
+       trener.wstawObecnosc("grupa", "klient");
+       
+       Map<String, ArrayList<Integer>> listaObecnosci = grupa.getListaObecnosci();
+       
+        //SPRAWDZANIE CZY W LISCIE JEST WPISANA OBECNOSC CZY NIE OBECNOSC
+        int wartoscObecnosci = listaObecnosci.get("klient").get(0); 
+        assertEquals(wartoscObecnosci, 1);
         
-    }
+        //SPRAWDZANIE ILE RAZY BYLA WPISANA OBECNOSC
+        int iloscObecnosci = listaObecnosci.get("klient").size(); 
+        assertEquals(iloscObecnosci, 1);
+       
+   }
     
+   @Test
+   public void testWstawNiebecnosc(){
+       Grupa grupa = new Grupa("grupa");
+       List<Grupa> grupy = new ArrayList<>();
+       grupy.add(grupa);
+       Trener trener = new Trener("trener");
+       trener.setGrupy(grupy);
+       trener.wstawNieobecnosc("grupa", "klient");
+       
+       Map<String, ArrayList<Integer>> listaObecnosci = grupa.getListaObecnosci();
+       
+        //SPRAWDZANIE CZY W LISCIE JEST WPISANA OBECNOSC CZY NIE OBECNOSC
+        int wartoscObecnosci = listaObecnosci.get("klient").get(0); 
+        assertEquals(wartoscObecnosci, 0);
+        
+        //SPRAWDZANIE ILE RAZY BYLA WPISANA OBECNOSC
+        int iloscObecnosci = listaObecnosci.get("klient").size(); 
+        assertEquals(iloscObecnosci, 1);
+       
+   }
 }

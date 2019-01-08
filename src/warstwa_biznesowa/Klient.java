@@ -10,6 +10,7 @@ package warstwa_biznesowa;
  * @author Student
  */
 public class Klient extends User{
+    
     private int poziom;
 
     public Klient(String name){

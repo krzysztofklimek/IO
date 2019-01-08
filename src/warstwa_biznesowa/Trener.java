@@ -65,8 +65,16 @@ public class Trener extends User {
         grupa.setPlanZajec(plan);
     }
     
-    public void sprawdzObecnosc(){
+    public void wstawObecnosc(String nazwaGrupy, String nazwaKlienta){
+                
+        Grupa grupa = szukajGrupy(nazwaGrupy);
+        grupa.obecnosc(nazwaKlienta);
+    }
+    
+    public void wstawNieobecnosc(String nazwaGrupy, String nazwaKlienta){
         
+        Grupa grupa = szukajGrupy(nazwaGrupy);
+        grupa.nieobecnosc(nazwaKlienta);
     }
     
     
